@@ -7,17 +7,40 @@ class Player {
 
 void main() {
   var zeriong = Player(name: "zeriong");
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Center(
-          child: Text("Hello World"),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "Hey, Selena",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "Welcome back",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
