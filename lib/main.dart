@@ -7,12 +7,10 @@ class Player {
 
 void main() {
   var zeriong = Player(name: "zeriong");
-  runApp(const App());
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -20,6 +18,9 @@ class App extends StatelessWidget {
         backgroundColor: Colors.black,
         body: Column(
           children: [
+            SizedBox(
+              height: 80,
+            ),
             Row(
               children: [
                 Column(
