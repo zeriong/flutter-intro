@@ -12,20 +12,21 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         // custom color 지정할 때 0xFF + [ 컬러 코드 ] ( 아래는 코드: #181818 )
-        backgroundColor: const Color(0xFF181818),
+        backgroundColor: Color(0xFF181818),
 
         // body
         body: Padding(
           // 전체를 페딩 위젯으로 감싸서 전체 페딩 적용
 
           // 페딩을 EdgeInsets.symmetric를 활용한다면 x, y 의 양방향으로 넣을 수 있음
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+          padding: EdgeInsets.symmetric(horizontal: 40),
 
           // children
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 박스를 추가하여 간격을 만듦
-              const SizedBox(
+              SizedBox(
                 height: 80,
               ),
 
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
                     // 해당 컬럼 item 내부 정렬을 end로 설정 ( justify-content: end 와 유사 )
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
+                      Text(
                         "Hey, Selena",
                         style: TextStyle(
                           color: Colors.white,
@@ -56,7 +57,36 @@ class App extends StatelessWidget {
                     ],
                   )
                 ],
-              )
+              ),
+
+              // 박스를 추가하여 간격을 만듦
+              SizedBox(
+                height: 120,
+              ),
+
+              // total balance text
+              Text(
+                "Total Balance",
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white.withOpacity(0.8),
+                ),
+              ),
+
+              // 박스를 추가하여 간격을 만듦
+              SizedBox(
+                height: 5,
+              ),
+
+              // total balance text
+              Text(
+                "\$5 194 482",
+                style: TextStyle(
+                  fontSize: 44,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
         ),
