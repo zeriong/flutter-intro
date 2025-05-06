@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         // custom color 지정할 때 0xFF + [ 컬러 코드 ] ( 아래는 코드: #181818 )
-        backgroundColor: Color(0xFF181818),
+        backgroundColor: const Color(0xFF181818),
 
         // body
         body: Padding(
@@ -26,7 +26,7 @@ class App extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 박스를 추가하여 간격을 만듦
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
 
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
                     // 해당 컬럼 item 내부 정렬을 end로 설정 ( justify-content: end 와 유사 )
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         "Hey, Selena",
                         style: TextStyle(
                           color: Colors.white,
@@ -60,7 +60,7 @@ class App extends StatelessWidget {
               ),
 
               // 박스를 추가하여 간격을 만듦
-              SizedBox(
+              const SizedBox(
                 height: 120,
               ),
 
@@ -74,12 +74,12 @@ class App extends StatelessWidget {
               ),
 
               // 박스를 추가하여 간격을 만듦
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
 
               // total balance amount
-              Text(
+              const Text(
                 "\$5 194 482",
                 style: TextStyle(
                   fontSize: 44,
@@ -89,7 +89,7 @@ class App extends StatelessWidget {
               ),
 
               // 박스를 추가하여 간격을 만듦
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
 
@@ -101,7 +101,7 @@ class App extends StatelessWidget {
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(45),
                       ),
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.symmetric(
                           vertical: 20,
                           horizontal: 50,
