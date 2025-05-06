@@ -78,7 +78,7 @@ class App extends StatelessWidget {
                 height: 5,
               ),
 
-              // total balance text
+              // total balance amount
               Text(
                 "\$5 194 482",
                 style: TextStyle(
@@ -87,6 +87,34 @@ class App extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+
+              // 박스를 추가하여 간격을 만듦
+              SizedBox(
+                height: 30,
+              ),
+
+              //
+              Row(
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(45),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 20,
+                          horizontal: 50,
+                        ),
+                        child: Text(
+                          "Transfer",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      )),
+                ],
+              )
             ],
           ),
         ),
