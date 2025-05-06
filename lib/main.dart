@@ -19,7 +19,9 @@ class App extends StatelessWidget {
           // 전체를 페딩 위젯으로 감싸서 전체 페딩 적용
 
           // 페딩을 EdgeInsets.symmetric를 활용한다면 x, y 의 양방향으로 넣을 수 있음
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
 
           // children
           child: Column(
@@ -93,26 +95,51 @@ class App extends StatelessWidget {
                 height: 30,
               ),
 
-              //
+              // 트랜스퍼, 리퀘스트 버튼들
               Row(
+                // space between 정렬
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Transfer 버튼
                   Container(
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(45),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 50,
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 50,
+                      child: Text(
+                        "Transfer",
+                        style: TextStyle(
+                          fontSize: 20,
                         ),
-                        child: Text(
-                          "Transfer",
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
+                      ),
+                    ),
+                  ),
+
+                  // Request 버튼
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF1F2123),
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 50,
+                      ),
+                      child: Text(
+                        "Request",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],
