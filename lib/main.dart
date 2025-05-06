@@ -101,7 +101,24 @@ class App extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Transfer 버튼
-                  MyButton(),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(45),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 50,
+                      ),
+                      child: Text(
+                        "Transfer",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
 
                   // Request 버튼
                   Container(
@@ -126,34 +143,6 @@ class App extends StatelessWidget {
                 ],
               )
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyButton extends StatelessWidget {
-  const MyButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.amber,
-        borderRadius: BorderRadius.circular(45),
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 50,
-        ),
-        child: Text(
-          "Transfer",
-          style: TextStyle(
-            fontSize: 20,
           ),
         ),
       ),
