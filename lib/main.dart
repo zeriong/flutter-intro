@@ -20,7 +20,7 @@ class App extends StatelessWidget {
           // 전체를 페딩 위젯으로 감싸서 전체 페딩 적용
 
           // 페딩을 EdgeInsets.symmetric를 활용한다면 x, y 의 양방향으로 넣을 수 있음
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 20,
           ),
 
@@ -148,36 +148,41 @@ class App extends StatelessWidget {
               ),
 
               Container(
-                decoration: BoxDecoration(color: Color(0xFF1F2123)),
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1F2123),
+                  borderRadius: BorderRadius.circular(25),
+                ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding: const EdgeInsets.all(30),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Euro",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Row(
                             children: [
-                              Text(
+                              const Text(
                                 "6 428",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                 ),
                               ),
-                              SizedBox(
-                                width: 10,
+                              const SizedBox(
+                                width: 5,
                               ),
                               Text(
                                 "EUR",
@@ -188,7 +193,17 @@ class App extends StatelessWidget {
                             ],
                           )
                         ],
-                      )
+                      ),
+                      Transform.scale(
+                          scale: 2.2,
+                          child: Transform.translate(
+                            offset: const Offset(-5, 12),
+                            child: const Icon(
+                              Icons.euro_rounded,
+                              size: 88,
+                              color: Colors.white,
+                            ),
+                          ))
                     ],
                   ),
                 ),
