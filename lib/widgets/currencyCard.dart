@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CurrencyCard extends StatelessWidget {
@@ -7,19 +9,14 @@ class CurrencyCard extends StatelessWidget {
   final String currency;
 
   final double? iconSize;
-  final double? iconOffsetX;
-  final double? iconOffsetY;
-  final double? cardOffsetX;
-  final double? cardOffsetY;
+  final Offset? iconOffset;
+  final Offset? cardOffset;
 
-  final Color? bgColor;
-  final Color? titleColor;
-  final Color? amountColor;
-  final Color? currencyColor;
-  final Color? iconColor;
+  final bool isInverted;
 
   // 앞단에 언더스코어를 추가하면 private으로 지정되어 파라미터로 공개되지 않는다
   final _blackColor = const Color(0xFF000000);
+  final _whiteColor = const Color(0xFFFFFFFF);
 
   const CurrencyCard({
     super.key,
@@ -27,26 +24,25 @@ class CurrencyCard extends StatelessWidget {
     required this.title,
     required this.amount,
     required this.currency,
-    this.bgColor = const Color(0xFF1F2123),
-    this.titleColor,
-    this.amountColor,
-    this.currencyColor,
-    this.iconColor,
     this.iconSize,
-    this.iconOffsetX,
-    this.iconOffsetY,
-    this.cardOffsetX,
-    this.cardOffsetY,
+    this.iconOffset,
+    this.cardOffset,
+    this.isInverted = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    // 변수로 할당하여 간략하게 공용화
+    var innerContentColor = isInverted ? _blackColor : _whiteColor;
+
+    // 위젯 반환
     return Transform.translate(
-      offset: Offset(cardOffsetX ?? 0, cardOffsetY ?? 0),
+      offset: cardOffset ?? const Offset(0, 0),
       child: Container(
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          color: bgColor,
+          // card 배경색의 경우 inner content와 반전임
+          color: isInverted ? _whiteColor : const Color(0xFF1F2123),
           borderRadius: BorderRadius.circular(25),
         ),
         child: Padding(
@@ -60,7 +56,7 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                      color: titleColor ?? Colors.white,
+                      color: innerContentColor,
                       fontSize: 30,
                       fontWeight: FontWeight.w500,
                     ),
@@ -73,7 +69,7 @@ class CurrencyCard extends StatelessWidget {
                       Text(
                         amount,
                         style: TextStyle(
-                          color: amountColor ?? Colors.white,
+                          color: innerContentColor,
                           fontSize: 20,
                         ),
                       ),
@@ -83,7 +79,7 @@ class CurrencyCard extends StatelessWidget {
                       Text(
                         currency,
                         style: TextStyle(
-                          color: currencyColor ?? Colors.white.withOpacity(0.7),
+                          color: innerContentColor,
                         ),
                       )
                     ],
@@ -93,11 +89,11 @@ class CurrencyCard extends StatelessWidget {
               Transform.scale(
                   scale: 2.2,
                   child: Transform.translate(
-                    offset: Offset(iconOffsetX ?? -5, iconOffsetY ?? 12),
+                    offset: iconOffset ?? const Offset(-5, 12),
                     child: Icon(
                       icon,
                       size: iconSize ?? 88,
-                      color: iconColor ?? Colors.white,
+                      color: innerContentColor,
                     ),
                   ))
             ],
