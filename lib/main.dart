@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_intro/widgets/button.dart';
+import 'package:flutter_intro/widgets/currencyCard.dart';
 
 void main() {
   runApp(const App());
@@ -147,6 +148,13 @@ class App extends StatelessWidget {
                 height: 20,
               ),
 
+              const CurrencyCard(
+                title: "Euro",
+                amount: "6 428",
+                currency: "EUR",
+                icon: Icons.euro_rounded,
+              ),
+
               Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
@@ -207,7 +215,7 @@ class App extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
