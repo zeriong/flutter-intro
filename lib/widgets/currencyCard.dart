@@ -16,6 +16,9 @@ class CurrencyCard extends StatelessWidget {
   final Color? currencyColor;
   final Color? iconColor;
 
+  // 앞단에 언더스코어를 추가하면 private으로 지정되어 파라미터로 공개되지 않는다
+  final _blackColor = const Color(0xFF000000);
+
   const CurrencyCard({
     super.key,
     required this.icon,
