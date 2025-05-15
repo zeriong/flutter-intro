@@ -9,6 +9,27 @@ void main() {
 class App extends StatelessWidget {
   App({super.key});
 
+  final List<Map<String, dynamic>> _cardList = [
+    {
+      "title": "Euro",
+      "amount": "6 428",
+      "currency": "EUR",
+      "icon": Icons.euro_rounded,
+    },
+    {
+      "title": "Euro",
+      "amount": "6 428",
+      "currency": "EUR",
+      "icon": Icons.euro_rounded,
+    },
+    {
+      "title": "Euro",
+      "amount": "6 428",
+      "currency": "EUR",
+      "icon": Icons.euro_rounded,
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -149,12 +170,13 @@ class App extends StatelessWidget {
                   height: 20,
                 ),
 
-                const CurrencyCard(
-                  title: "Euro",
-                  amount: "6 428",
-                  currency: "EUR",
-                  icon: Icons.euro_rounded,
-                ),
+                for (var item in _cardList)
+                  CurrencyCard(
+                    title: item["title"],
+                    amount: item["amount"],
+                    currency: item["currency"],
+                    icon: item["icon"],
+                  ),
               ],
             ),
           ),
