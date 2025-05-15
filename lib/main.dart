@@ -9,29 +9,39 @@ void main() {
 class App extends StatelessWidget {
   App({super.key});
 
-  final List<Map<String, dynamic>> _cardList = [
-    {
-      "title": "Euro",
-      "amount": "6 428",
-      "currency": "EUR",
-      "icon": Icons.euro_rounded,
-    },
-    {
-      "title": "Euro",
-      "amount": "6 428",
-      "currency": "EUR",
-      "icon": Icons.euro_rounded,
-    },
-    {
-      "title": "Euro",
-      "amount": "6 428",
-      "currency": "EUR",
-      "icon": Icons.euro_rounded,
-    }
-  ];
+  // 초반에 이 위치에서 "cardList" 클래스를 선언해서 활용해봤지만
+  // 초기 실행 시에만 변화를 확인할 수 있었다.
+  // 실질적으로 hotreload에 포함되기 위해선 Widget 단위로 instance가 존재해야 한다.
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> cardList = [
+      {
+        "title": "Euro",
+        "amount": "6 428",
+        "currency": "EUR",
+        "icon": Icons.euro_rounded,
+        "isInverted": false,
+        "cardOffset": const Offset(0, 0),
+      },
+      {
+        "title": "Bitcoin",
+        "amount": "9 785",
+        "currency": "BTC",
+        "icon": Icons.currency_bitcoin,
+        "isInverted": true,
+        "cardOffset": const Offset(0, -20),
+      },
+      {
+        "title": "Dollar",
+        "amount": "459",
+        "currency": "USD",
+        "icon": Icons.attach_money_outlined,
+        "isInverted": false,
+        "cardOffset": const Offset(0, -40),
+      }
+    ];
+
     return MaterialApp(
       home: Scaffold(
         // custom color 지정할 때 0xFF + [ 컬러 코드 ] ( 아래는 코드: #181818 )
@@ -170,12 +180,14 @@ class App extends StatelessWidget {
                   height: 20,
                 ),
 
-                for (var item in _cardList)
+                for (var item in cardList)
                   CurrencyCard(
                     title: item["title"],
                     amount: item["amount"],
                     currency: item["currency"],
                     icon: item["icon"],
+                    isInverted: item["isInverted"],
+                    cardOffset: item["cardOffset"],
                   ),
               ],
             ),
