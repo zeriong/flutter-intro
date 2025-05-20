@@ -11,9 +11,11 @@ class _StatefulAppState extends State<StatefulApp> {
   int count = 0;
 
   void onClicked() {
-    setState(() {
-      count += 1;
-    });
+    count += 1;
+    // setState(() {
+    //   count += 1;
+    // });
+    setState(() {});
   }
 
   @override
