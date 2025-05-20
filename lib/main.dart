@@ -22,7 +22,6 @@ class App extends StatelessWidget {
         "currency": "EUR",
         "icon": Icons.euro_rounded,
         "isInverted": false,
-        "cardOffset": const Offset(0, 0),
       },
       {
         "title": "Bitcoin",
@@ -30,7 +29,6 @@ class App extends StatelessWidget {
         "currency": "BTC",
         "icon": Icons.currency_bitcoin,
         "isInverted": true,
-        "cardOffset": const Offset(0, -20),
       },
       {
         "title": "Dollar",
@@ -38,7 +36,6 @@ class App extends StatelessWidget {
         "currency": "USD",
         "icon": Icons.attach_money_outlined,
         "isInverted": false,
-        "cardOffset": const Offset(0, -40),
       }
     ];
 
@@ -180,14 +177,14 @@ class App extends StatelessWidget {
                   height: 20,
                 ),
 
-                for (var item in cardList)
+                for (var i = 0; i < cardList.length; i++)
                   CurrencyCard(
-                    title: item["title"],
-                    amount: item["amount"],
-                    currency: item["currency"],
-                    icon: item["icon"],
-                    isInverted: item["isInverted"],
-                    cardOffset: item["cardOffset"],
+                    title: cardList[i]["title"],
+                    amount: cardList[i]["amount"],
+                    currency: cardList[i]["currency"],
+                    icon: cardList[i]["icon"],
+                    isInverted: cardList[i]["isInverted"],
+                    order: i,
                   ),
               ],
             ),

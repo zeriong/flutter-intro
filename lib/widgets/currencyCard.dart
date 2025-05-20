@@ -10,7 +10,7 @@ class CurrencyCard extends StatelessWidget {
 
   final double? iconSize;
   final Offset? iconOffset;
-  final Offset? cardOffset;
+  final int order;
 
   final bool isInverted;
 
@@ -26,7 +26,7 @@ class CurrencyCard extends StatelessWidget {
     required this.currency,
     this.iconSize,
     this.iconOffset,
-    this.cardOffset,
+    this.order = 0,
     this.isInverted = false,
   });
 
@@ -34,10 +34,11 @@ class CurrencyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // 변수로 할당하여 간략하게 공용화
     var innerContentColor = isInverted ? _blackColor : _whiteColor;
+    var dy = (-20 * order).toDouble();
 
     // 위젯 반환
     return Transform.translate(
-      offset: cardOffset ?? const Offset(0, 0),
+      offset: Offset(0, dy),
       child: Container(
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
