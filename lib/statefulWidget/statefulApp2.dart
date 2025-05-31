@@ -8,6 +8,14 @@ class StatefulApp2 extends StatefulWidget {
 }
 
 class _StatefulAppState extends State<StatefulApp2> {
+  bool showTitle = true;
+
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +33,11 @@ class _StatefulAppState extends State<StatefulApp2> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // 위젯
-              MyLargeTitle(),
+              showTitle ? const MyLargeTitle() : const Text("Nothing"),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: const Icon(Icons.remove_red_eye),
+              )
             ],
           ),
         ),
@@ -49,6 +61,13 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   void initState() {
     super.initState();
     print("init state!");
+  }
+
+  // 해당 위젯이 사라지면서 호출되는 useEffect의 return cleanup과 비슷한 역할을 한다.
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose...");
   }
 
   // build
