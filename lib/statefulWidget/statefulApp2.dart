@@ -64,6 +64,7 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   }
 
   // 해당 위젯이 사라지면서 호출되는 useEffect의 return cleanup과 비슷한 역할을 한다.
+  // 즉, 위젯트리에서 사라질 때 필요한 이벤트리스너 구독취소 등에 활용 됨
   @override
   void dispose() {
     super.dispose();
