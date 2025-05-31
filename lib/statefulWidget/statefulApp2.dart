@@ -8,17 +8,16 @@ class StatefulApp2 extends StatefulWidget {
 }
 
 class _StatefulAppState extends State<StatefulApp2> {
-  List<int> numbers = [];
-
-  void onClicked() {
-    setState(() {
-      numbers.add(numbers.length);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
       home: Scaffold(
         backgroundColor: const Color(0xFFF4EDDB),
         body: Center(
@@ -42,9 +41,10 @@ class MyLargeTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    return Text(
       "My Large Title",
-      style: TextStyle(fontSize: 20),
+      style: TextStyle(
+          fontSize: 20, color: Theme.of(context).textTheme.titleLarge!.color),
     );
   }
 }
