@@ -34,13 +34,27 @@ class _StatefulAppState extends State<StatefulApp2> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
 
   @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  // init state는 단 한번만 호출되며 build 보다 먼저 나와야 한다.
+  @override
+  void initState() {
+    super.initState();
+    print("init state!");
+  }
+
+  // build
+  @override
   Widget build(BuildContext context) {
+    print("build!");
     return Text(
       "My Large Title",
       style: TextStyle(
