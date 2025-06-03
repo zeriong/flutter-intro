@@ -17,31 +17,19 @@ class _HomeScreenState extends State<HomeScreen> {
             // flex 비율을 결정
             flex: 1,
 
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.red,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             // flex 비율을 결정 ( 2이기 때문에 위아래 Flexible 박스보다 2배 큼 )
             flex: 2,
 
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             // flex 비율을 결정
             flex: 1,
 
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
+            child: Container(),
           ),
         ],
       ),
