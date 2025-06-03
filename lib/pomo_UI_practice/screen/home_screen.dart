@@ -14,6 +14,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Flexible(
+            // flex 비율을 결정
+            flex: 1,
+
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.red,
@@ -21,6 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
+            // flex 비율을 결정 ( 2이기 때문에 위아래 Flexible 박스보다 2배 큼 )
+            flex: 2,
+
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.green,
@@ -28,6 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
+            // flex 비율을 결정
+            flex: 1,
+
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.blue,
