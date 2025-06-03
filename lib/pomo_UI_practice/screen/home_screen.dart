@@ -8,6 +8,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void onPressed() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             // flex 비율을 결정 ( 2이기 때문에 위아래 Flexible 박스보다 2배 큼 )
-            flex: 2,
+            flex: 3,
 
-            child: Container(),
+            child: Center(
+              child: IconButton(
+                onPressed: onPressed,
+                iconSize: 120,
+                color: Theme.of(context).cardColor,
+                icon: Icon(
+                  Icons.play_circle_outline,
+                ),
+              ),
+            ),
           ),
           Flexible(
             // flex 비율을 결정
