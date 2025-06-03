@@ -53,7 +53,25 @@ class _HomeScreenState extends State<HomeScreen> {
             // flex 비율을 결정
             flex: 1,
 
-            child: Container(),
+            child: Row(
+              children: [
+                // Expanded를 활용하면 width: 100% 가 됨
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Pomodors"),
+                        Text("0"),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
