@@ -62,10 +62,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Theme.of(context).cardColor,
                     ),
                     child: Column(
+                      // 중앙 정렬
                       mainAxisAlignment: MainAxisAlignment.center,
+
                       children: [
-                        Text("Pomodors"),
-                        Text("0"),
+                        Text(
+                          "Pomodoros",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .color,
+                          ),
+                        ),
+                        Text(
+                          "0",
+                          style: TextStyle(
+                            fontSize: 58,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .color,
+                          ),
+                        ),
                       ],
                     ),
                   ),
