@@ -10,20 +10,39 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int totalSeconds = 1500;
-  late Timer timer;
+  int totalSeconds = 1500; // 총 시간
+  bool isRunning = false; // 실행중 플래그
 
+  late Timer timer; // 타이머
+
+  // 타이머를 감소시키는 매서드
   void onTick(Timer timer) {
     setState(() {
       totalSeconds -= 1;
     });
   }
 
+  // 타이머 시작 매서드
   void onStartPressed() {
     timer = Timer.periodic(
       const Duration(seconds: 1),
       onTick,
     );
+
+    // 실행중 플래그 세팅
+    setState(() {
+      isRunning = true;
+    });
+  }
+
+  // 타이머 일시 정지 매서드
+  void onPausePressed() {
+    timer.cancel();
+
+    // 실행중 플래그 세팅
+    setState(() {
+      isRunning = false;
+    });
   }
 
   @override
@@ -56,11 +75,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
             child: Center(
               child: IconButton(
-                onPressed: onStartPressed,
+                onPressed: isRunning ? onPausePressed : onStartPressed,
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
                 icon: Icon(
-                  Icons.play_circle_outline,
+                  isRunning
+                      ? Icons.pause_circle_outline
+                      : Icons.play_circle_outline,
                 ),
               ),
             ),
