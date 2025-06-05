@@ -11,15 +11,29 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int totalSeconds = 1500; // 총 시간
+  int totalPomodoros = 0; // 총 시간\
   bool isRunning = false; // 실행중 플래그
 
   late Timer timer; // 타이머
 
   // 타이머를 감소시키는 매서드
   void onTick(Timer timer) {
-    setState(() {
-      totalSeconds -= 1;
-    });
+    // 타이머가 0이 되었다면 초기화 & pomodoros + 1 & stop timer
+    if (totalSeconds == 0) {
+      setState(() {
+        // states reset
+        isRunning = false;
+        totalSeconds = 1500;
+        totalPomodoros += 1;
+      });
+      timer.cancel(); // 타이머 캔슬
+
+      // 아닌 경우 지속적으로 타이머를 감소킴
+    } else {
+      setState(() {
+        totalSeconds -= 1;
+      });
+    }
   }
 
   // 타이머 시작 매서드
@@ -120,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          "0",
+                          "$totalPomodoros",
                           style: TextStyle(
                             fontSize: 58,
                             fontWeight: FontWeight.w600,
