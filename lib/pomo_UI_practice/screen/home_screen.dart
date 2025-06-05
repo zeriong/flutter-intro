@@ -10,7 +10,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int totalSeconds = 1500; // 총 시간
+  // 상수로 지정
+  static const twentyFiveMinutes = 1500;
+
+  int totalSeconds = twentyFiveMinutes; // 총 시간
   int totalPomodoros = 0; // 총 시간\
   bool isRunning = false; // 실행중 플래그
 
@@ -23,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         // states reset
         isRunning = false;
-        totalSeconds = 1500;
+        totalSeconds = twentyFiveMinutes;
         totalPomodoros += 1;
       });
       timer.cancel(); // 타이머 캔슬
