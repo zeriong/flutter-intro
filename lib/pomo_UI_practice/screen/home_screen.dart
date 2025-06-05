@@ -62,6 +62,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // 포맷 함수
+  String format(int seconds) {
+    // Duration 매서드를 활용하면 편하게 format할 수 있는 데이터를 반환받을 수 있다.
+    var duration = Duration(seconds: seconds);
+    // js와 마찬가지로 split 후에 subString을 통해서 특정 index~ index까지의 string을 잘라낼 수 있다.
+    return duration.toString().split(".").first.substring(2, 7);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.bottomCenter,
 
               child: Text(
-                "$totalSeconds",
+                format(totalSeconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor, // 테마 지정
                   fontSize: 89,
@@ -90,17 +98,21 @@ class _HomeScreenState extends State<HomeScreen> {
             // flex 비율을 결정 ( 2이기 때문에 위아래 Flexible 박스보다 2배 큼 )
             flex: 3,
 
-            child: Center(
-              child: IconButton(
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                icon: Icon(
-                  isRunning
-                      ? Icons.pause_circle_outline
-                      : Icons.play_circle_outline,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: isRunning ? onPausePressed : onStartPressed,
+                  iconSize: 120,
+                  color: Theme.of(context).cardColor,
+                  icon: Icon(
+                    isRunning
+                        ? Icons.pause_circle_outline
+                        : Icons.play_circle_outline,
+                  ),
                 ),
-              ),
+                IconButton(onPressed: onPressed, icon: icon)
+              ],
             ),
           ),
           Flexible(
