@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_intro/statelessWidget/widgets/button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -62,6 +63,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  /// 커스텀 함
+  void onResetPressed() {
+    setState(() {
+      totalSeconds = twentyFiveMinutes; // 총 시간
+      totalPomodoros = 0; // 총 시간
+      isRunning = false; // 실행중 플래그
+    });
+  }
+
   // 포맷 함수
   String format(int seconds) {
     // Duration 매서드를 활용하면 편하게 format할 수 있는 데이터를 반환받을 수 있다.
@@ -111,7 +121,47 @@ class _HomeScreenState extends State<HomeScreen> {
                         : Icons.play_circle_outline,
                   ),
                 ),
-                IconButton(onPressed: onPressed, icon: icon)
+
+                // 간격 추가
+                const SizedBox(
+                  height: 40,
+                ),
+
+                // icons과 text가 공존하는 버튼을 만듦
+                IntrinsicWidth(
+                  child: TextButton(
+                    onPressed: onResetPressed,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // icon
+                        Icon(
+                          Icons.refresh_outlined,
+                          color: Theme.of(context).cardColor,
+                        ),
+
+                        // icon과 text의 간격
+                        const SizedBox(
+                          width: 10,
+                        ),
+
+                        // Reset text
+                        Text(
+                          "Reset",
+                          style: TextStyle(
+                            color: Theme.of(context).cardColor,
+                            fontSize: 24,
+                          ),
+                        ),
+
+                        // 버튼 area를 늘려 ui가 좀 더 괜찮게 보이게 함
+                        const SizedBox(
+                          width: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
