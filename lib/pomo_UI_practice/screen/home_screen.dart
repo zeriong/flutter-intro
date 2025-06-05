@@ -59,6 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
+                      // 전체를 둥글게 하지 않고 상단 좌,우만 Radius 속성 지정
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      ),
                       color: Theme.of(context).cardColor,
                     ),
                     child: Column(
